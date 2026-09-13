@@ -111,7 +111,12 @@ vec3 getTangent()
 void main()
 {
     gl_PointSize = 1.0f;
-#ifdef USE_INSTANCING
+#ifdef USE_SKINNING
+    // Joint matrices already transform positions, normals and tangents to world
+    // space. Ignore the mesh node transform, including when its scale is zero.
+    mat4 modelMatrix = mat4(1.0);
+    mat4 normalMatrix = mat4(1.0);
+#elif defined(USE_INSTANCING)
     mat4 modelMatrix = a_instance_model_matrix;
     mat4 normalMatrix = transpose(inverse(modelMatrix));
 #else
