@@ -973,7 +973,7 @@ class KHR_materials_pbrSpecularGlossiness extends GltfObject {
         }
 
         if (jsonSpecularGlossiness.specularGlossinessTexture !== undefined) {
-            const specularGlossinessTexture = new gltfTextureInfo();
+            const specularGlossinessTexture = new gltfTextureInfo(undefined, 0, false);
             specularGlossinessTexture.fromJson(jsonSpecularGlossiness.specularGlossinessTexture);
             this.specularGlossinessTexture = specularGlossinessTexture;
         }
